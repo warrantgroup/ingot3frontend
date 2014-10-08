@@ -1,0 +1,23 @@
+{
+    "name": "Ingot Portal",
+    "version": "3.0.0",
+    "authors": [
+        "Andy Roberts <andy.roberts@warrant-group.com>"
+    ],
+    "license": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "3.0.0",
+        "jquery": "~1.9.1",
+        "requirejs": "~2.1.9",
+        "requirejs-domready": "~2.0.1",
+        "font-awesome": "4.1.*",
+        "blockui": "*"
+    }
+}

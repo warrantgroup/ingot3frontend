@@ -1,1 +1,8 @@
-/vendor/
+vendor
+composer.lock
+.buildpath
+.project
+.settings
+.idea
+
+src/config.yml

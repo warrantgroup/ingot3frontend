@@ -1,0 +1,288 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    <script id="partyAutocompleteTemplate" type="text/x-kendo-template">
+        #:data.name#, hello!
+    </script>
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/newShipment'
+        }) }}
+    {% endblock %}
+
+    <div class="page-content">
+    <div class="container-fluid-md">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-horizontal" role="form">
+                        <fieldset>
+                            <div class="row">
+                                <label for="tradeType" class="col-sm-3 control-label">Trade Type <span
+                                            class="require">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-bind="value: tradeType, source: tradeTypeData, events:{ change: listener }"
+                                                    id="tradeType" class="full-width">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="shipmentMode" class="col-sm-3 control-label">Shipment Mode <span
+                                            class="require">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-bind="value: shipmentMode, source: shipmentModeData, events:{ change: shipmentModeListener }"
+                                                    id="shipmentMode" class="full-width">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label for="containerMode" class="col-sm-3 control-label">Container Mode <span
+                                            class="require">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-bind="value: containerMode, events:{ change: listener }"
+                                                    id="containerMode" class="full-width">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label for="shipmentMode" class="col-sm-3 control-label">Shipment Type <span
+                                            class="require">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-bind="value: shipmentType, source: shipmentTypeData, events:{ change: listener }"
+                                                    id="shipmentType" class="full-width">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid-md">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body" id="shipment-form">
+                    <div class="form-horizontal" role="form">
+                        <fieldset>
+                            <legend class="form-legend">
+                                <span>Parties</span>
+                            </legend>
+                            <div class="form-horizontal" role="form">
+                                <div class="row">
+                                    <label for="shipper" class="col-sm-3 control-label">Shipper <span
+                                                class="require">*</span></label>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: shipper"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="shipper"
+                                                   name="shipper"
+                                                   class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="consignee" class="col-sm-3 control-label">Consignee</label>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: consignee"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="consignee"
+                                                   name="consignee"
+                                                   class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="form-legend">
+                                <span>Main Carriage</span>
+                            </legend>
+                            <div class="form-horizontal" role="form">
+                                <div class="row" id="port-loading-row">
+                                    <label class="col-sm-3 control-label" for="portLoading">Port Loading</label>
+
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="text" name="portLoading" id="portLoading" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="port-discharge-row">
+                                    <label class="col-sm-3 control-label" for="portDischarge">Port Discharge</label>
+
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="text" name="portDischarge" id="portDischarge"
+                                                   class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="carrier-row">
+                                    <label class="col-sm-3 control-label" for="carrier">Shipping Line</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" id="carrier" name="carrier" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="vehicle-row">
+                                    <label class="col-sm-3 control-label" for="vehicle">Vessel</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" id="vehicle" name="vehicle" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="voyageNo-row">
+                                    <label class="col-sm-3 control-label" for="voyageNo">Voyage No.</label>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="voyageNo" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                        <fieldset>
+                            <legend class="form-legend">
+                                <span>Shipment Details</span>
+                            </legend>
+                            <div class="form-horizontal" role="form">
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">PO Reference</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">Incoterm</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" id="incoterm" name="incoterm" class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">Movement Type</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" id="movementType" name="movementType"
+                                                   class="full-width"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">Freight PC</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option>Prepaid</option>
+                                                <option>Collect</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">Other PC</label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option>Prepaid</option>
+                                                <option>Collect</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 control-label">Notes</label>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <textarea rows="6" class="form-control full-width"
+                                                      placeholder="Notes"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-primary">Create New Shipment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
