@@ -29,9 +29,12 @@
                                             <select data-role="dropdownlist"
                                                     data-text-field="name"
                                                     data-value-field="id"
-                                                    data-bind="value: tradeType, source: tradeTypeData, events:{ change: listener }"
-                                                    id="tradeType" class="full-width">
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
+                                                    data-bind="value: tradeType, source: tradeTypeData, events:{ change: tradeTypeListener }"
+                                                    id="tradeType" name="tradeType" class="full-width" required data-required-msg="Enter Trade Type">
                                             </select>
+                                            <span class="k-invalid-msg" data-for="tradeType"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -46,9 +49,12 @@
                                             <select data-role="dropdownlist"
                                                     data-text-field="name"
                                                     data-value-field="id"
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
                                                     data-bind="value: shipmentMode, source: shipmentModeData, events:{ change: shipmentModeListener }"
-                                                    id="shipmentMode" class="full-width">
+                                                    id="shipmentMode" name="shipmentMode" class="full-width" required data-required-msg="Enter Shipment Mode">
                                             </select>
+                                            <span class="k-invalid-msg" data-for="shipmentMode"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -64,17 +70,20 @@
                                             <select data-role="dropdownlist"
                                                     data-text-field="name"
                                                     data-value-field="id"
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
                                                     data-bind="value: containerMode, events:{ change: listener }"
-                                                    id="containerMode" class="full-width">
+                                                    id="containerMode" name="containerMode" class="full-width" required data-required-msg="Enter Container Mode">
                                                 <option value=""></option>
                                             </select>
+                                            <span class="k-invalid-msg" data-for="containerMode"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <label for="shipmentMode" class="col-sm-3 control-label">Shipment Type <span
+                                <label for="shipmentType" class="col-sm-3 control-label">Shipment Type <span
                                             class="require">*</span></label>
 
                                 <div class="col-sm-4">
@@ -83,9 +92,12 @@
                                             <select data-role="dropdownlist"
                                                     data-text-field="name"
                                                     data-value-field="id"
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
                                                     data-bind="value: shipmentType, source: shipmentTypeData, events:{ change: listener }"
-                                                    id="shipmentType" class="full-width">
+                                                    id="shipmentType" name="shipmentType" class="full-width" required data-required-msg="Enter Shipment Type">
                                             </select>
+                                            <span class="k-invalid-msg" data-for="shipmentType"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -108,8 +120,7 @@
                             </legend>
                             <div class="form-horizontal" role="form">
                                 <div class="row">
-                                    <label for="shipper" class="col-sm-3 control-label">Shipper <span
-                                                class="require">*</span></label>
+                                    <label for="shipper" class="col-sm-3 control-label">Shipper</label>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -121,7 +132,7 @@
                                                    data-minLength="3"
                                                    id="shipper"
                                                    name="shipper"
-                                                   class="full-width"/>
+                                                   class="full-width" data-required-msg="Enter Shipper"/>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +149,7 @@
                                                    data-minLength="3"
                                                    id="consignee"
                                                    name="consignee"
-                                                   class="full-width"/>
+                                                   class="full-width" data-required-msg="Enter Consignee"/>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +166,15 @@
 
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <input type="text" name="portLoading" id="portLoading" class="full-width"/>
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: portLoading"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="portLoading"
+                                                   name="portLoading"
+                                                   class="full-width"/>
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +183,14 @@
 
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <input type="text" name="portDischarge" id="portDischarge"
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: portDischarge"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="portDischarge"
+                                                   name="portDischarge"
                                                    class="full-width"/>
                                         </div>
                                     </div>
@@ -174,7 +200,15 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input type="text" id="carrier" name="carrier" class="full-width"/>
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: carrier"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="carrier"
+                                                   name="carrier"
+                                                   class="full-width"/>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +217,15 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input type="text" id="vehicle" name="vehicle" class="full-width"/>
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: vessel"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="vessel"
+                                                   name="vessel"
+                                                   class="full-width"/>
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +261,15 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input type="text" id="incoterm" name="incoterm" class="full-width"/>
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: incoterm"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="incoterm"
+                                                   name="incoterm"
+                                                   class="full-width"/>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +278,14 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input type="text" id="movementType" name="movementType"
+                                            <input data-role="autocomplete"
+                                                   data-bind="source: movementType"
+                                                   data-text-field="name"
+                                                   data-value-field="id"
+                                                   data-filter="startsWith"
+                                                   data-minLength="3"
+                                                   id="movementType"
+                                                   name="movementType"
                                                    class="full-width"/>
                                         </div>
                                     </div>
@@ -238,9 +295,13 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Prepaid</option>
-                                                <option>Collect</option>
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
+                                                    data-bind="value: freightPc, source: freightPcData, events:{ change: listener }"
+                                                    id="freightPc" name="freightPc" class="full-width">
                                             </select>
                                         </div>
                                     </div>
@@ -250,9 +311,13 @@
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Prepaid</option>
-                                                <option>Collect</option>
+                                            <select data-role="dropdownlist"
+                                                    data-text-field="name"
+                                                    data-value-field="id"
+                                                    data-filter="startsWith"
+                                                    data-minLength="3"
+                                                    data-bind="value: otherPc, source: otherPcData, events:{ change: listener }"
+                                                    id="otherPc" name="otherPc" class="full-width">
                                             </select>
                                         </div>
                                     </div>

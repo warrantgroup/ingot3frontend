@@ -9,7 +9,7 @@
         "silex/silex": "1.0.*",
         "twig/twig": "1.*",
         "symfony/twig-bridge": "2.1.*",
-        "guzzlehttp/guzzle": "4.2.*",
+        "guzzlehttp/guzzle": "v3.8.1",
         "symfony/yaml": "2.5.*@dev",
         "warrantgroup/silex-asset-extension": "dev-master",
         "deralex/yaml-config-service-provider": "1.0.x-dev"
