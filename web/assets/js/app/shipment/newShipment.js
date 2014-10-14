@@ -18,37 +18,61 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
                 this.updateContainerMode(this.get('shipmentMode'));
                 this.processForm(e);
             },
+            tradeTypeListener: function(e) {
+                this.updateShipperRequired(this.get('tradeType'));
+                this.processForm(e);
+            },
             tradeTypeData: new kendo.data.DataSource({
-                data: [
-                    {name: 'Export', id: 'export'},
-                    {name: 'Import', id: 'import'},
-                    {name: 'Domestic', id: 'domestic'}
-                ]
+                serverFiltering: true,
+                transport: {
+                    read: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/tradetype"
+                }
             }),
             containerModeInland: new kendo.data.DataSource({
-                data: [
-                    {name: 'FTL', id: 'ftl'},
-                    {name: 'LTL', id: 'ftl'}
-                ]
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/containermode",
+                        data: {
+                            containerMode : 'Road'
+                        }
+                    }
+                }
             }),
             containerModeSea: new kendo.data.DataSource({
-                data: [
-                    {name: 'FCL', id: 'fcl'},
-                    {name: 'LCL', id: 'lcl'}
-                ]
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/containermode",
+                        data: {
+                            containerMode : 'Sea'
+                        }
+                    }
+                }
             }),
             shipmentModeData: new kendo.data.DataSource({
-                data: [
-                    {name: 'Air', id: 'air'},
-                    {name: 'Sea', id: 'sea'},
-                    {name: 'Road', id: 'road'}
-                ]
+                serverFiltering: true,
+                transport: {
+                    read: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/shipmentmode"
+                }
             }),
             shipmentTypeData: new kendo.data.DataSource({
-                data: [
-                    {name: "Direct", id: "direct"},
-                    {name: "House", id: "house"}
-                ]
+                serverFiltering: true,
+                transport: {
+                    read: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/shipmenttype"
+                }
+            }),
+            freightPcData: new kendo.data.DataSource({
+                serverFiltering: true,
+                transport: {
+                    read: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/pcdata"
+                }
+            }),
+            otherPcData: new kendo.data.DataSource({
+                serverFiltering: true,
+                transport: {
+                    read: "http://localhost/ingot3/web/app_dev.php/api/v1/dropdown/pcdata"
+                }
             }),
             shipper: new kendo.data.DataSource({
                 transport: {
@@ -74,6 +98,78 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
                     }
                 }
             }),
+            portLoading: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/location",
+                        data: {
+                            query: function(){
+                                return $("#portLoading").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
+            portDischarge: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/location",
+                        data: {
+                            query: function(){
+                                return $("#portDischarge").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
+            carrier: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/carrier",
+                        data: {
+                            query: function(){
+                                return $("#carrier").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
+            vessel: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/vessel",
+                        data: {
+                            query: function(){
+                                return $("#vessel").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
+            incoterm: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/incoterm",
+                        data: {
+                            query: function(){
+                                return $("#incoterm").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
+            movementType: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "http://localhost/ingot3/web/app_dev.php/api/v1/autocomplete/movementtype",
+                        data: {
+                            query: function(){
+                                return $("#movementType").data("kendoAutoComplete").value();
+                            }
+                        }
+                    }
+                }
+            }),
             processForm: function (e) {
 
                 //$('#shipment-form').block({message: null, fadeIn: 0, fadeOut: 0});
@@ -90,44 +186,61 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
                 }
             },
             renderShipment: function () {
-
-                if (this.get('shipmentMode') === 'sea') {
+                if (this.get('shipmentMode') === 'SEA') {
                     $('#shipment-form div.row[id=vehicle-row]').show();
                 } else {
                     $('#shipment-form div.row[id=vehicle-row]').hide();
                 }
 
-                if (this.get('shipmentType') === 'direct') {
+                if (this.get('shipmentType') === 'DIR') {
                     $('#shipment-form div.row[id=carrier-row]').show();
                     $('#shipment-form div.row[id=voyageNo-row]').show();
-                } else if (this.get('shipmentType') === 'house') {
+                } else if (this.get('shipmentType') === 'HOU') {
                     $('#shipment-form div.row[id=carrier-row]').hide();
                     $('#shipment-form div.row[id=vehicle-row]').hide();
                     $('#shipment-form div.row[id=voyageNo-row]').hide();
                 }
-
             },
             updateContainerMode: function (shipmentMode) {
                 var containerMode = $('#containerMode').data("kendoDropDownList");
-
                 switch (shipmentMode) {
-                    case 'air' :
+                    case 'AIR' :
                         containerMode.setDataSource(new kendo.data.DataSource({}));
                         containerMode.enable(false);
                         break;
-                    case 'sea':
+                    case 'SEA':
                         containerMode.setDataSource(this.get('containerModeSea'));
                         containerMode.enable();
                         break;
-                    case 'road':
+                    case 'ROA':
                         containerMode.setDataSource(this.get('containerModeInland'));
                         containerMode.enable();
                         break;
                 }
             },
+            updateShipperRequired: function (tradeType) {
+                switch (tradeType) {
+                    case 'IMP' :
+                        $("#consignee").prop('required',true).addClass("k-invalid-msg");
+                        $('#shipment-form label[for=consignee]').text('Consignee *');
+
+                        $("#shipper").prop('required',false).removeClass("k-invalid-msg");
+                        $('#shipment-form label[for=shipper]').text('Shipper');
+                        $("#shipper").kendoValidator().data("kendoValidator").hideMessages();
+                        break;
+                    case 'EXP':
+                        $("#shipper").prop('required',true).addClass("k-invalid-msg");
+                        $('#shipment-form label[for=shipper]').text('Shipper *');
+
+                        $("#consignee").prop('required',false).removeClass("k-invalid-msg");
+                        $('#shipment-form label[for=consignee]').text('Consignee');
+                        $("#consignee").kendoValidator().data("kendoValidator").hideMessages();
+                        break;
+                }
+            },
             changeLabels: function () {
                 switch (this.get('shipmentMode')) {
-                    case 'air' :
+                    case 'AIR' :
                         $('#shipment-form label[for=portLoading]').text('Gateway');
                         $('#shipment-form label[for=portDischarge]').text('Destination');
                         $('#shipment-form label[for=carrier]').text('Airline');
@@ -135,7 +248,7 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
                         $('#shipment-form label[for=dimensionalWeight]').text('Chargable Weight (kg)');
                         break;
 
-                    case 'sea' :
+                    case 'SEA' :
                         $('#shipment-form label[for=portLoading]').text('Port Loading');
                         $('#shipment-form label[for=portDischarge]').text('Port Discharge');
                         $('#shipment-form label[for=carrier]').text('Shipping Line');
@@ -144,7 +257,7 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
                         $('#shipment-form label[for=dimensionalWeight]').text('Weight Measure (mt)');
                         break;
 
-                    case 'road' :
+                    case 'ROA' :
                         $('#shipment-form label[for=portLoading]').text('From');
                         $('#shipment-form label[for=portDischarge]').text('To');
                         $('#shipment-form label[for=carrier]').text('Haulier');
@@ -157,8 +270,10 @@ define(['jquery', 'domReady!', 'kendo', 'blockui'], function ($, doc, kendo, blo
 
         kendo.bind($(".page-content"), viewModel);
 
+        $(".page-content").kendoValidator().data("kendoValidator");
+
         $("#tradeType").kendoDropDownList({
-            optionLabel: "Select Shipment Type...",
+            optionLabel: "Select Trade Type...",
             valuePrimitive: true
         });
 
