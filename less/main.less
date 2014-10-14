@@ -1,0 +1,34 @@
+@import "general/mixins.less";
+@import "general/variables.less";
+
+// Remove Chrome's Orange Outline
+* {
+	outline: none !important;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: @baseFontFamily;
+	color: @textColor;
+	font-size: @baseFontSize;
+	//overflow-y: scroll;
+}
+
+@import "general/layout.less";
+@import "general/typography.less";
+@import "general/navbar.less";
+@import "general/dropdowns.less";
+@import "general/sidebar_navigation.less";
+@import "general/breadcrumb.less";
+@import "general/buttons.less";
+@import "general/widgets.less";
+@import "general/general_ui.less";
+@import "general/progressbars.less";
+@import "general/forms.less";
+@import "general/tables.less";
+@import "general/tabs.less";
+@import "general/modals.less";
+@import "themes/dark.less";

@@ -3,26 +3,50 @@ Ingot 3 Front End
 
 Ingot 3 Front End used alongside Ingot3 repository which is used for the backend.
 
-# Installation
+1. Install the Composer vendors (download Composer first from http://getcomposer.org)
 
-### Install Composer
+    ```
+    php composer.phar install
+    ```
 
-```
-$ curl -s https://getcomposer.org/installer | php
-```
+    Follow the instructions at the end to make sure that you have the parameters.yml
+    file setup.
 
-### Update Dependancies
+2. Make sure you have node and npm installed and setup. If you do, the following commands should work, other download and install node.js from http://nodejs.org/download/
 
-```
-./composer install
-```
+    ```
+    node -v
+    npm -v
+    ```
 
-### Cache Directory Permissons
+3. Use npm to install bower, compass and grunt-cli
 
-```
-chmod 777 cache
-```
+    ```
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    ```
 
+4. Download the bower dependencies:
+
+    ```
+    bower install
+    ```
+
+    This should give you a populated `web/assets/vendor` directory.
+
+5. Download the local node dependencies:
+
+    ```
+    npm install
+    ```
+
+    This should give you a `node_modules` directory.
+
+6. Use grunt to initially compile the LESS files, and watch for any changes
+
+    ```
+    grunt
+    ```
 
 
 

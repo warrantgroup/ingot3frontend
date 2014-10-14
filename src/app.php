@@ -23,15 +23,16 @@ $twig->addExtension(new \Warrant\Twig\Extension\AssetExtension($app));
 
 
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig');
+    return $app->redirect('shipment');
 });
 
-/**
- * Shipment Wireframe
- */
-$app->get('/wireframe/shipment/new', function () use ($app) {
-    return $app['twig']->render('shipment/wireframe/newShipment.html.twig');
-});
+$app->get('/shipment', function () use ($app) {
+    return $app['twig']->render('shipment/index.html.twig');
+})->bind('shipment');
+
+$app->get('/shipment/{ref}/details', function () use ($app) {
+    return $app['twig']->render('shipment/details.html.twig');
+})->bind('shipment_details');
 
 return $app;
 

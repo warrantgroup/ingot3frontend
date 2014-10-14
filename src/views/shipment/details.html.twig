@@ -1,0 +1,192 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/details'
+        }) }}
+    {% endblock %}
+
+    <div id="container">
+
+        {% include "shipment/_sidebar.html.twig" %}
+
+        <div id="content">
+            <div class="container">
+
+                {% include "shipment/_breadcrumbs.html.twig" %}
+
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>IFT00001</h3>
+                        <span>Shipment Details</span>
+                    </div>
+
+                    <ul class="page-stats">
+                        <li>
+                            <div class="summary">
+                                <span>Trade Type</span>
+
+                                <h3>Export</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="summary">
+                                <span>Mode</span>
+
+                                <h3>Sea</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="summary">
+                                <span>Container</span>
+
+                                <h3>FCL</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="summary">
+                                <span>Type</span>
+
+                                <h3>Direct</h3>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- /Page Stats -->
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget box">
+                            <div class="widget-header">
+                                <h4>&nbsp;</h4>
+                            </div>
+                            <div class="widget-content">
+                                <div class="tabbable box-tabs">
+                                    <ul class="nav nav-tabs">
+                                        <li><a href="#box_additional" data-toggle="tab">Additional</a></li>
+                                        <li><a href="#box_dates" data-toggle="tab">Dates</a></li>
+                                        <li><a href="#box_references" data-toggle="tab">References</a></li>
+                                        <li class="active"><a href="#box_details" data-toggle="tab">Details</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="box_details">
+                                            <form class="form-horizontal row-border" action="#">
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Forwarder Ref:</label>
+
+                                                    <div class="col-md-4"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Movement Type:</label>
+
+                                                    <div class="col-md-4"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Incoterm:</label>
+
+                                                    <div class="col-md-6"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="widget-header widget-subheader">
+                                                        <h4>Main Carriage</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Port Loading:</label>
+
+                                                    <div class="col-md-10"><input type="text" name="regular"
+                                                                                  class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Port Discharge:</label>
+
+                                                    <div class="col-md-10"><input type="text" name="regular"
+                                                                                  class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Shipping Line:</label>
+
+                                                    <div class="col-md-8"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Vessel:</label>
+
+                                                    <div class="col-md-8"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Voyage Number:</label>
+
+                                                    <div class="col-md-4"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">ETD:</label>
+
+                                                    <div class="col-md-2"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                    <label class="col-md-1 control-label">ETA:</label>
+
+                                                    <div class="col-md-2"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">ATD:</label>
+
+                                                    <div class="col-md-2"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                    <label class="col-md-1 control-label">ATA:</label>
+
+                                                    <div class="col-md-2"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label">Carrier Booking Reference:</label>
+
+                                                    <div class="col-md-5"><input type="text" name="regular"
+                                                                                 class="form-control"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="box_references">
+                                            <p>References</p>
+                                        </div>
+                                        <div class="tab-pane" id="box_dates">
+                                            <p>Dates</p>
+                                        </div>
+                                        <div class="tab-pane" id="box_additional">
+                                            <form class="form-horizontal row-border" action="#">
+                                            <div class="row">
+                                                <label class="col-md-2 control-label">Freight PC:</label>
+
+                                                <div class="col-md-3"><input type="text" name="regular"
+                                                                             class="form-control"></div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-2 control-label">Other PC:</label>
+
+                                                <div class="col-md-3"><input type="text" name="regular"
+                                                                             class="form-control"></div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tabbable portlet-tabs -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

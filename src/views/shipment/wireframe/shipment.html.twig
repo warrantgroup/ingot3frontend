@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" style="padding-left: 30px;"><h2>IFT00001</h2></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="margin-top: 20px;">
+                <div class="pull-left">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-labeled btn-success">
+                        <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span> Save Changes
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default active">More</button>
+                    <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a href="#">Close Shipment</a></li>
+                        <li><a href="#">Reopen Shipment</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Convert from House shipment to Direct</a></li>
+                        <li><a href="#">Convert from Direct shipment to House</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Copy Shipment</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Details</a>
+                </li>
+                <li>
+                    <a href="#">Parties</a>
+                </li>
+                <li>
+                    <a href="#">Pickup</a>
+                </li>
+                <li>
+                    <a href="#">Containers</a>
+                </li>
+                <li>
+                    <a href="#">Packages</a>
+                </li>
+                <li>
+                    <a href="#">Routing</a>
+                </li>
+                <li>
+                    <a href="#">Delivery</a>
+                </li>
+                <li>
+                    <a href="#">Documents In</a>
+                </li>
+                <li>
+                    <a href="#">Documents Out</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">Communication</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
