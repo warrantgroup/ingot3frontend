@@ -20,7 +20,7 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
 
     $("#shipment-grid").kendoGrid({
         dataSource: dataSource,
-        height: $(document).height() - 180,
+        height: $(document).height() - 200,
         groupable: false,
         sortable: true,
         pageable: {

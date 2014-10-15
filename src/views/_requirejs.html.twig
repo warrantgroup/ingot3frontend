@@ -1,7 +1,8 @@
 <script src="{{ asset(assetsPath~'/vendor/requirejs/require.js') }}"></script>
 <script>
     requirejs.config({
-        baseUrl: '{{ app.request.basePath }}/{{ assetsPath }}/js'
+        baseUrl: '{{ app.request.basePath }}/{{ assetsPath }}/js',
+        waitSeconds: 0
     });
 
     require(['common'], function (common) {
