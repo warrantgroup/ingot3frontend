@@ -8,11 +8,8 @@ Ingot 3 Front End used alongside Ingot3 repository which is used for the backend
     ```
     php composer.phar install
     ```
-
-    Follow the instructions at the end to make sure that you have the parameters.yml
-    file setup.
-
-2. Make sure you have node and npm installed and setup. If you do, the following commands should work, other download and install node.js from http://nodejs.org/download/
+    
+2. Make sure you have node and npm installed and setup. If you do, the following commands should work, otherwise download and install node.js from http://nodejs.org/download/
 
     ```
     node -v
