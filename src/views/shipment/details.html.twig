@@ -73,23 +73,42 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="box_details">
                                             <form class="form-horizontal row-border" action="#">
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Forwarder Ref:</label>
 
-                                                    <div class="col-md-4"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="forwarderRef">Forwarder Ref:</label>
+                                                    <div class="col-md-4">
+                                                        <input type="text"
+                                                            name="forwarderRef"
+                                                            class="form-control">
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Movement Type:</label>
 
-                                                    <div class="col-md-4"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="movementType">Movement Type:</label>
+                                                    <div class="col-md-4">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: movementType"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="movementType"
+                                                            name="movementType"
+                                                            class="full-width"/></div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Incoterm:</label>
 
-                                                    <div class="col-md-6"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="incoterm">Incoterm:</label>
+                                                    <div class="col-md-6">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: incoterm"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="incoterm"
+                                                            name="incoterm"
+                                                            class="full-width"/></div>
                                                 </div>
 
                                                 <div class="row">
@@ -99,60 +118,129 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <label class="col-md-2 control-label">Port Loading:</label>
-
-                                                    <div class="col-md-10"><input type="text" name="regular"
-                                                                                  class="form-control"></div>
+                                                    <label class="col-md-2 control-label" for="portLoading">Port Loading:</label>
+                                                    <div class="col-md-10">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: portLoading"
+                                                            data-text-field="location"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="portLoading"
+                                                            name="portLoading"
+                                                            class="full-width"/>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Port Discharge:</label>
 
-                                                    <div class="col-md-10"><input type="text" name="regular"
-                                                                                  class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="portDischarge">Port Discharge:</label>
+                                                    <div class="col-md-10">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: portDischarge"
+                                                            data-text-field="location"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="portDischarge"
+                                                            name="portDischarge"
+                                                            class="full-width"/>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Shipping Line:</label>
 
-                                                    <div class="col-md-8"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="carrier">Shipping Line:</label>
+                                                    <div class="col-md-8">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: carrier"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="carrier"
+                                                            name="carrier"
+                                                            class="full-width"/>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Vessel:</label>
 
-                                                    <div class="col-md-8"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="vessel">Vessel:</label>
+                                                    <div class="col-md-8">
+                                                        <input data-role="autocomplete"
+                                                            data-bind="source: vessel"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            id="vessel"
+                                                            name="vessel"
+                                                            class="full-width"/>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Voyage Number:</label>
 
-                                                    <div class="col-md-4"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="voyageNo">Voyage Number:</label>
+                                                    <div class="col-md-4">
+                                                        <input type="text"
+                                                            name="voyageNo"
+                                                            class="form-control">
+                                                    </div>
                                                 </div>
+
                                                 <div class="row">
-                                                    <label class="col-md-2 control-label">ETD:</label>
+                                                    <label class="col-md-2 control-label" for="etd">ETD:</label>
+                                                    <div class="col-md-2">
+                                                        <input type="date"
+                                                            data-role="datepicker"
+                                                            data-format="dd/MM/yyyy"
+                                                            data-bind="events:{ change: etdListener }"
+                                                            name="etd"
+                                                            id="etd"
+                                                            class="form-control">
+                                                    </div>
 
-                                                    <div class="col-md-2"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
-                                                    <label class="col-md-1 control-label">ETA:</label>
-
-                                                    <div class="col-md-2"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                    <label class="col-md-1 control-label" for="eta">ETA:</label>
+                                                    <div class="col-md-2">
+                                                        <input type="date"
+                                                            data-role="datepicker"
+                                                            data-format="dd/MM/yyyy"
+                                                            data-bind="events:{ change: etaListener }"
+                                                            name="eta"
+                                                            id="eta"
+                                                            class="form-control">
+                                                    </div>
                                                 </div>
+
                                                 <div class="row">
-                                                    <label class="col-md-2 control-label">ATD:</label>
+                                                    <label class="col-md-2 control-label" for="atd">ATD:</label>
+                                                    <div class="col-md-2">
+                                                        <input type="date"
+                                                           data-role="datepicker"
+                                                           data-format="dd/MM/yyyy"
+                                                           data-bind="events:{ change: atdListener }"
+                                                           name="atd"
+                                                           id="atd"
+                                                           class="form-control">
+                                                    </div>
 
-                                                    <div class="col-md-2"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
-                                                    <label class="col-md-1 control-label">ATA:</label>
-
-                                                    <div class="col-md-2"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                    <label class="col-md-1 control-label" for="ata">ATA:</label>
+                                                    <div class="col-md-2">
+                                                        <input type="date"
+                                                           data-role="datepicker"
+                                                           data-format="dd/MM/yyyy"
+                                                           data-bind="events:{ change: ataListener }"
+                                                           name="ata"
+                                                           id="ata"
+                                                           class="form-control">
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label class="col-md-2 control-label">Carrier Booking Reference:</label>
 
-                                                    <div class="col-md-5"><input type="text" name="regular"
-                                                                                 class="form-control"></div>
+                                                <div class="row">
+                                                    <label class="col-md-2 control-label" for="carrierBookingRef">Carrier Booking Reference:</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                           name="carrierBookingRef"
+                                                           class="form-control">
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="widget-header widget-subheader">
@@ -200,16 +288,35 @@
                                         <div class="tab-pane" id="box_additional">
                                             <form class="form-horizontal row-border" action="#">
                                             <div class="row">
-                                                <label class="col-md-2 control-label">Freight PC:</label>
-
-                                                <div class="col-md-3"><input type="text" name="regular"
-                                                                             class="form-control"></div>
+                                                <label class="col-md-2 control-label" for="freightPc">Freight PC:</label>
+                                                <div class="col-md-3">
+                                                    <select data-role="dropdownlist"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            data-bind="value: freightPc, source: freightPcData, events:{ change: listener }"
+                                                            id="freightPc"
+                                                            name="freightPc"
+                                                            class="full-width">
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <label class="col-md-2 control-label">Other PC:</label>
 
-                                                <div class="col-md-3"><input type="text" name="regular"
-                                                                             class="form-control"></div>
+                                            <div class="row">
+                                                <label class="col-md-2 control-label" for="otherPc">Other PC:</label>
+                                                <div class="col-md-3">
+                                                    <select data-role="dropdownlist"
+                                                            data-text-field="name"
+                                                            data-value-field="id"
+                                                            data-filter="startsWith"
+                                                            data-minLength="3"
+                                                            data-bind="value: otherPc, source: otherPcData, events:{ change: listener }"
+                                                            id="otherPc"
+                                                            name="otherPc"
+                                                            class="full-width">
+                                                    </select>
+                                                </div>
                                             </div>
                                             </form>
                                         </div>
