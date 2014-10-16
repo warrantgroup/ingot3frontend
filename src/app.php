@@ -34,5 +34,9 @@ $app->get('/shipment/{ref}/details', function () use ($app) {
     return $app['twig']->render('shipment/details.html.twig');
 })->bind('shipment_details');
 
+$app->get('/shipment/{ref}/parties', function () use ($app) {
+    return $app['twig']->render('shipment/parties.html.twig');
+})->bind('shipment_parties');
+
 return $app;
 

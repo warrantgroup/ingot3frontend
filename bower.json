@@ -18,7 +18,8 @@
         "requirejs": "~2.1.9",
         "requirejs-domready": "~2.0.1",
         "font-awesome": "4.1.*",
-        "blockui": "*"
+        "blockui": "*",
+        "flag-icon-css": "*"
     },
     "overrides": {
         "bootstrap-sass": {
