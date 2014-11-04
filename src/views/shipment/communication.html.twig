@@ -1,0 +1,49 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/communication'
+        }) }}
+    {% endblock %}
+
+    <div id="container">
+
+        {% include "shipment/_sidebar.html.twig" %}
+
+        <script type="text/x-kendo-tmpl" id="template">
+        <div class="row ">
+            <div class=" col-md-10 col-lg-10">
+                <div class="panel-body">
+                    #:subject#
+                    <br />
+                    <small class="text-muted">#:created_by.first_name# #:created_by.last_name# | 23rd June at 5:00pm</small>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </script>
+
+        <div id="content">
+            <div class="container">
+
+                {% include "shipment/_breadcrumbs.html.twig" %}
+
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>IFT00001</h3>
+                        <span>Shipment Messages</span>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="shipment-messages-listview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

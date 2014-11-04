@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/packages'
+        }) }}
+    {% endblock %}
+
+
+    <div id="container">
+
+        {% include "shipment/_sidebar.html.twig" %}
+
+        <div id="content">
+            <div class="container">
+
+                {% include "shipment/_breadcrumbs.html.twig" %}
+
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>IFT00001</h3>
+                        <span>Packages</span>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="shipment-packages-grid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

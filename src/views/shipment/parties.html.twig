@@ -16,34 +16,34 @@
         <div class="col-sm-2 col-md-3 col-lg-4">
             <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">#:partyType#</h3>
+                        <h3 class="panel-title">#:party.name#</h3>
                     </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-2 col-lg-2">
-                        <div class="flag-wrapper"><div class="flag flag-icon-background flag-icon-#:partyCountryCode#"></div></div>
+                        <div class="flag-wrapper"><div class="flag flag-icon-background flag-icon-#:party.address.country.id.toLowerCase()#"></div></div>
                     </div>
                     <div class=" col-md-10 col-lg-10">
-                        <h4>#:partyName#</h4><br>
+                        <h4>#:party.name#</h4><br>
                             <table class="table table-condensed">
                             <tbody>
                                     <tr>
-                                        <td>#:partyAddress1#</td>
+                                        <td>#:party.address.address1#</td>
                                     </tr>
                                     <tr>
-                                        <td>#:partyAddress2#</td>
+                                        <td>#:party.address.address2#</td>
                                     </tr>
                                     <tr>
-                                        <td>#:partyAddress3#</td>
+                                        <td>#:party.address.address3#</td>
                                     </tr>
                                     <tr>
-                                        <td>#:partyAddress4#</td>
+                                        <td>#:party.address.address4#</td>
                                     </tr>
                                     <tr>
-                                        <td>#:partyPostCode#</td>
+                                        <td>#:party.address.post_code#</td>
                                     </tr>
                                     <tr>
-                                        <td>#:partyCountry#</td>
+                                        <td>#:party.address.country.name#</td>
                                     </tr>
                             </tbody>
                             </table>
@@ -51,9 +51,10 @@
                 </div>
             </div>
              <div class="panel-footer">
-                <button class="btn btn-sm btn-primary" type="button"
+                <button class="btn btn-sm btn-primary" type="button" id="email"
                 data-toggle="tooltip"
-                data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                data-original-title="Send message to user"
+                ><i class="glyphicon glyphicon-envelope"></i></button>
                 <span class="pull-right">
                 <button class="btn btn-sm btn-warning" type="button"
                 data-toggle="tooltip"
@@ -78,25 +79,7 @@
                     <span>Shipment Parties</span>
                 </div>
 
-
-                <div class="page-toolbar">
-                    <div class="btn-toolbar">
-                        <div class="btn-group">
-                            <button class="btn btn-success">Add New Party</button>
-                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Shipper</a></li>
-                                <li><a href="#">Consignee</a></li>
-                                <li><a href="#">Agent</a></li>
-                                <li><a href="#">Notify Party 1</a></li>
-                                <li><a href="#">Notify Party 2</a></li>
-                                <li><a href="#">Issuing Carrier Agent</a></li>
-                                <li><a href="#">Customs Agent (Import)</a></li>
-                                <li><a href="#">Customs Agent (Export)</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {% include "shipment/_addPartyCombo.html.twig" %}
             </div>
 
             <div class="container-fluid">

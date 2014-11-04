@@ -1,0 +1,19 @@
+<div class="page-toolbar">
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <button class="btn btn-success">Add New Party</button>
+            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '1' }) }}">Consignee</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '2' }) }}">Notify Party</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '3' }) }}">Customer</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '4' }) }}">Shipper</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '5' }) }}">Overseas Partner</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '6' }) }}">Agent</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '7' }) }}">Issuing Carrier Agent</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '8' }) }}">Customs Agent (Import)</a></li>
+                <li><a href="{{ url('shipment_party_add', { 'ref': 'IFT00001', 'partyType': '9' }) }}">Customs Agent (Export)</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

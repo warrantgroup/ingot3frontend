@@ -38,5 +38,21 @@ $app->get('/shipment/{ref}/parties', function () use ($app) {
     return $app['twig']->render('shipment/parties.html.twig');
 })->bind('shipment_parties');
 
+$app->get('/shipment/{ref}/party/{partyType}/add', function () use ($app) {
+    return $app['twig']->render('shipment/addParty.html.twig');
+})->bind('shipment_party_add');
+
+$app->get('/shipment/{ref}/containers', function () use ($app) {
+    return $app['twig']->render('shipment/containers.html.twig');
+})->bind('shipment_containers');
+
+$app->get('/shipment/{ref}/packages', function () use ($app) {
+    return $app['twig']->render('shipment/packages.html.twig');
+})->bind('shipment_packages');
+
+$app->get('/shipment/{ref}/communication', function () use ($app) {
+    return $app['twig']->render('shipment/communication.html.twig');
+})->bind('shipment_communication');
+
 return $app;
 
