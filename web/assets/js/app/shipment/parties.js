@@ -1,10 +1,6 @@
 define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
 
     $(doc).ready(function() {
-
-
-
-
         $(document).on('click','#email',function(){
             console.log($(this));
         });
@@ -21,8 +17,5 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
             dataSource: dataSource,
             template: kendo.template($("#template").html())
         }).data("kendoListView");
-
-
     });
-
 });

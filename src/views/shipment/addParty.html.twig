@@ -8,234 +8,229 @@
         }) }}
     {% endblock %}
 
-
     <div id="container">
 
-        {% include "shipment/_sidebar.html.twig" %}
+    {% include "shipment/_sidebar.html.twig" %}
 
-        <div id="content">
-            <div class="container">
+    <div id="content">
+    <div class="container">
 
-                {% include "shipment/_breadcrumbs.html.twig" %}
+    {% include "shipment/_breadcrumbs.html.twig" %}
 
-                <div class="page-header">
-                    <div class="page-title">
-                        <h3>IFT00001</h3>
-                        <span>Add Party</span>
-                    </div>
-
-
-                    {% include "shipment/_addPartyCombo.html.twig" %}
-                </div>
-
-                <div class="form-findParty" role="form">
-                    <fieldset>
-                        <legend class="form-legend">
-                            <span>Find Party</span>
-                        </legend>
-
-                        <div class="row">
-                            <label for="party" class="col-sm-3 control-label">Party Name </label>
-
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <input data-role="autocomplete"
-                                           data-bind="source: party, events:{ select: partyListener }"
-                                           data-text-field="name"
-                                           data-filter="startsWith"
-                                           data-minLength="3"
-                                           id="party"
-                                           class="form-control"
-                                           class="full-width"/>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <input type="submit" id="find" value="Find Party"/>
-                </div>
-<br>
-                <div class="form-newParty" role="form">
-                    <fieldset>
-                        <legend class="form-legend">
-                            <span>Add New Party</span>
-                        </legend>
-                        <div class="row">
-                            <label for="name" class="col-sm-3 control-label">Party Name <span
-                                        class="require">*</span></label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="name" class="form-control" class="full-width"/>
-                                        <span class="k-invalid-msg" data-for="name"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="phone" class="col-sm-3 control-label">Phone Number </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="phone" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="fax" class="col-sm-3 control-label">Fax </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="fax" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="website" class="col-sm-3 control-label">Website </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="website" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="vatNo" class="col-sm-3 control-label">VAT Number </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="vatNo" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="regNo" class="col-sm-3 control-label">Registration Number </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="regNo" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="note" class="col-sm-3 control-label">Note </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="note" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="form-legend">
-                            <span>Address Details</span>
-                        </legend>
-                        <div class="row">
-                            <label for="address1" class="col-sm-3 control-label">Address Line 1 <span
-                                        class="require">*</span></label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="address1" class="form-control" class="full-width"/>
-                                        <span class="k-invalid-msg" data-for="address1"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="address2" class="col-sm-3 control-label">Address Line 2 </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="address2" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="address3" class="col-sm-3 control-label">Address Line 3 </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="address3" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="address4" class="col-sm-3 control-label">Address Line 4 </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="address4" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="website" class="col-sm-3 control-label">Postcode </label>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <input type="text" id="postcode" class="form-control" class="full-width"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label for="location" class="col-sm-3 control-label">Location </label>
-
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <input data-role="autocomplete"
-                                           data-bind="source: location, events:{ select: locationListener }"
-                                           data-text-field="location"
-                                           data-filter="startsWith"
-                                           data-minLength="3"
-                                           id="location"
-                                           class="form-control"
-                                           class="full-width"/>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <input type="submit" id="submit" value="Add Party"/>
-                </div>
-            </div>
+    <div class="page-header">
+        <div class="page-title">
+            <h3>IFT00001</h3>
+            <span>Add Party</span>
         </div>
+
+
+        {% include "shipment/_addPartyCombo.html.twig" %}
     </div>
 
+    <div class="form-findParty" role="form">
+        <fieldset>
+            <legend class="form-legend">
+                <span>Find Party</span>
+            </legend>
 
+            <div class="row">
+                <label for="party" class="col-sm-3 control-label">Party Name </label>
 
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <input data-role="autocomplete"
+                               data-bind="source: party, events:{ select: partyListener }"
+                               data-text-field="name"
+                               data-filter="startsWith"
+                               data-minLength="3"
+                               id="party"
+                               class="form-control"
+                               class="full-width"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <input type="submit" id="find" value="Find Party"/>
+    </div>
+    <br>
 
+    <div class="form-newParty" role="form">
+        <fieldset>
+            <legend class="form-legend">
+                <span>Add New Party</span>
+            </legend>
+            <div class="row">
+                <label for="name" class="col-sm-3 control-label">Party Name <span
+                            class="require">*</span></label>
 
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="name" class="form-control" class="full-width"/>
+                            <span class="k-invalid-msg" data-for="name"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="phone" class="col-sm-3 control-label">Phone Number </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="phone" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="fax" class="col-sm-3 control-label">Fax </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="fax" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="website" class="col-sm-3 control-label">Website </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="website" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="vatNo" class="col-sm-3 control-label">VAT Number </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="vatNo" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="regNo" class="col-sm-3 control-label">Registration Number </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="regNo" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="note" class="col-sm-3 control-label">Note </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="note" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend class="form-legend">
+                <span>Address Details</span>
+            </legend>
+            <div class="row">
+                <label for="address1" class="col-sm-3 control-label">Address Line 1 <span
+                            class="require">*</span></label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="address1" class="form-control" class="full-width"/>
+                            <span class="k-invalid-msg" data-for="address1"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="address2" class="col-sm-3 control-label">Address Line 2 </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="address2" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="address3" class="col-sm-3 control-label">Address Line 3 </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="address3" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="address4" class="col-sm-3 control-label">Address Line 4 </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="address4" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="website" class="col-sm-3 control-label">Postcode </label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <input type="text" id="postcode" class="form-control" class="full-width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="location" class="col-sm-3 control-label">Location </label>
+
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <input data-role="autocomplete"
+                               data-bind="source: location, events:{ select: locationListener }"
+                               data-text-field="location"
+                               data-filter="startsWith"
+                               data-minLength="3"
+                               id="location"
+                               class="form-control"
+                               class="full-width"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <input type="submit" id="submit" value="Add Party"/>
+    </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
