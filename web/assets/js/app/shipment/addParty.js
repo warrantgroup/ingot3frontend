@@ -45,7 +45,10 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
 
         kendo.bind($(".container"), viewModel);
 
-        $(".container").kendoValidator().data("kendoValidator");
+        var findPartyValidator = $("#form-findParty").kendoValidator().data("kendoValidator"),
+            findPartyStatus = $(".findPartyStatus"),
+            addPartyValidator = $("#form-newParty").kendoValidator().data("kendoValidator"),
+            addPartyStatus = $(".addPartyStatus");
 
         $("location").kendoAutoComplete({
             filter: "startswith",
@@ -61,6 +64,7 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
 
         $("#find").click( function()
         {
+            if (findPartyValidator.validate()) {
             var url = window.location.href.split("/");
             $.ajax({
                 type: "POST",
@@ -76,10 +80,14 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
                     }
                 }
             });
+            } else {
+                findPartyStatus.text("Please ensure all required fields are filled in.");
+            }
         });
 
         $("#submit").click( function()
         {
+            if (addPartyValidator.validate()) {
             var url = window.location.href.split("/");
             $.ajax({
                 type: "POST",
@@ -98,7 +106,7 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
                         address3: $("#address3").val(),
                         address4: $("#address4").val(),
                         post_code: $("#postcode").val(),
-                        //location: window.locationId,
+                        location: window.locationId,
                         country: window.countryId
                     },
                     partyType: url[8]
@@ -110,6 +118,9 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
                     }
                 }
             });
+            } else {
+                addPartyStatus.text("Please ensure all required fields are filled in.");
+            }
         });
     });
 });

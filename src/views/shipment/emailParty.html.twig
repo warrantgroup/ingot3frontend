@@ -1,0 +1,113 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/emailParty'
+        }) }}
+    {% endblock %}
+
+    <div id="container">
+
+    {% include "shipment/_sidebar.html.twig" %}
+
+    <div id="content">
+    <div class="container">
+
+    {% include "shipment/_breadcrumbs.html.twig" %}
+
+    <div class="page-header">
+        <div class="page-title">
+            <h3>IFT00001</h3>
+            <span>Email Party</span>
+        </div>
+
+
+        {% include "shipment/_addPartyCombo.html.twig" %}
+    </div>
+
+    <div class="form-emailParty" role="form">
+    <fieldset>
+        <legend class="form-legend">
+            <span>Email Party</span>
+        </legend>
+        <div class="row">
+            <label for="firstEmail" class="col-sm-3 control-label">Email To <span
+                        class="require">*</span></label>
+
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <select data-role="multiselect"
+                            data-value-primitive="true"
+                            data-text-field="name"
+                            data-value-field="email"
+                            data-bind="value: firstEmail,
+                              source: employees"
+                            id="firstEmail"
+                            name="firstEmail"
+                            style="width: 300px"
+                            required data-required-msg="Select Email To"
+                            ></select>
+                    <span class="k-invalid-msg" data-for="firstEmail"></span>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row">
+            <label for="secondEmail" class="col-sm-3 control-label">Email Cc </label>
+
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <select data-role="multiselect"
+                            data-value-primitive="true"
+                            data-text-field="name"
+                            data-value-field="email"
+                            data-bind="value: secondEmail,
+                              source: employees"
+                            id="secondEmail"
+                            style="width: 300px"
+                            ></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="subject" class="col-sm-3 control-label">Subject <span
+                        class="require">*</span></label>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="text" id="subject" name="subject" required data-required-msg="Enter Subject" class="form-control" class="full-width"/>
+                        <span class="k-invalid-msg" data-for="subject"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="phone" class="col-sm-3 control-label">Message <span
+                        class="require">*</span></label>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="controls">
+                        <textarea id="message" name="message" required data-required-msg="Enter Message" class="form-control" class="full-width"></textarea>
+                        <span class="k-invalid-msg" data-for="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+        <button class="k-button" type="submit" data-bind="
+                              events: {
+                                click: sendEmail
+                              }"/>Submit</button>
+        <div class="status">
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

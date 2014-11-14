@@ -42,6 +42,14 @@ $app->get('/shipment/{ref}/party/{partyType}/add', function () use ($app) {
     return $app['twig']->render('shipment/addParty.html.twig');
 })->bind('shipment_party_add');
 
+$app->get('/shipment/{ref}/party/{partyType}/edit', function () use ($app) {
+    return $app['twig']->render('shipment/editParty.html.twig');
+})->bind('shipment_party_edit');
+
+$app->get('/shipment/{ref}/party/{partyType}/email', function () use ($app) {
+    return $app['twig']->render('shipment/emailParty.html.twig');
+})->bind('shipment_party_email');
+
 $app->get('/shipment/{ref}/containers', function () use ($app) {
     return $app['twig']->render('shipment/containers.html.twig');
 })->bind('shipment_containers');

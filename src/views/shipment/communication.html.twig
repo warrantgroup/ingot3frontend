@@ -16,7 +16,9 @@
         <div class="panel-body">
             <div class="row ">
                 <div class=" col-md-10 col-lg-10">
-                    #:subject#
+                    <strong>#:subject#</strong>
+                    <br />
+                    #:message#
                     <br />
                     <small class="text-muted">#:created_by# | #:created_at#</small>
                     <hr />
@@ -28,11 +30,8 @@
     <script type="text/x-kendo-tmpl" id="send">
         <div class="panel-footer">
             <div class="row ">
-                <div class=" col-md-10 col-lg-10">
-                    <input type="text" class="form-control" id="message" placeholder="Enter Message" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info" id="sendButton" type="button">SEND</button>
-                    </span>
+
+
                 </div>
             </div>
         </div>
@@ -56,9 +55,24 @@
                     </div>
                 </div>
 
-                <div class="page-footer">
+                <div id="form-addMessage">
                     <div class="row">
-                        <div id="shipment-messages-send"></div>
+                        <div class=" col-md-10 col-lg-10">
+
+                            <label for="subject" class="col-sm-3 control-label">Subject <span
+                                    class="require">*</span></label>
+
+                            <input type="text" class="col-sm-9" class="form-group" id="subject" name="subject" required data-required-msg="Enter Subject" placeholder="Enter Subject" />
+                            <span class="k-invalid-msg" data-for="subject"></span>
+                            <br>
+                            <label for="message" class="col-sm-3 control-label">Message <span
+                                    class="require">*</span></label>
+                            <textarea class="col-sm-9" class="form-group" id="message" name="message" required data-required-msg="Enter Message" placeholder="Enter Message"></textarea>
+                            <span class="k-invalid-msg" data-for="message"></span>
+                            <br>
+                        <button class="k-button" type="submit" id="sendButton" />Send</button>
+
+                        <div class="status"></div>
                     </div>
                 </div>
             </div>

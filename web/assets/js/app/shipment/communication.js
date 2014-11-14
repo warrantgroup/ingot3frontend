@@ -14,15 +14,20 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
             template: kendo.template($("#messages").html())
         }).data("kendoListView");
 
-        $("#shipment-messages-send").html(kendo.template($("#send").html()));
+        var validator = $("#form-addMessage").kendoValidator().data("kendoValidator"),
+            status = $(".status");
 
         $("#sendButton").click( function()
         {
+            if (validator.validate()) {
             $.ajax({
                 type: "POST",
                 url: "http://localhost/ingot3/web/app_dev.php/api/v1/shipments/IFT00001/communications",
                 data: {
-                    subject: $("#message").val(),
+                    email_to: 'system',
+                    email_cc: null,
+                    subject: $("#subject").val(),
+                    message: $("#message").val(),
                     created_by: 78789
                 },
                 dataType: "json",
@@ -32,6 +37,9 @@ define(['jquery', 'domReady!', 'kendo'], function ($, doc, kendo) {
                     }
                 }
             });
+            } else {
+                status.text("Please ensure all required fields are filled in.");
+            }
         });
     });
 });

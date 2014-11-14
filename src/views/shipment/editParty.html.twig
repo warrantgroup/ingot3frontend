@@ -4,7 +4,7 @@
 
     {% block requirejs %}
         {{ include('_requirejs.html.twig', {
-        'module': 'app/shipment/addParty'
+        'module': 'app/shipment/editParty'
         }) }}
     {% endblock %}
 
@@ -20,17 +20,17 @@
     <div class="page-header">
         <div class="page-title">
             <h3>IFT00001</h3>
-            <span>Add Party</span>
+            <span>Edit Party</span>
         </div>
 
 
         {% include "shipment/_addPartyCombo.html.twig" %}
     </div>
 
-    <div id="form-findParty">
+    <div id="form-changeParty">
         <fieldset>
             <legend class="form-legend">
-                <span>Find Party</span>
+                <span>Change Party</span>
             </legend>
 
             <div class="row">
@@ -40,29 +40,59 @@
                 <div class="col-sm-9">
                     <div class="form-group">
                         <input data-role="autocomplete"
-                               data-bind="source: party, events:{ select: partyListener }"
-                               data-text-field="name"
-                               data-filter="startsWith"
-                               data-minLength="3"
-                               id="party"
-                               name="party"
-                               required data-required-msg="Enter Party Name"
-                               class="form-control"
-                               class="full-width"/>
+                            data-bind="source: party, events:{ select: partyListener }"
+                            data-text-field="name"
+                            data-filter="startsWith"
+                            data-minLength="3"
+                            id="party"
+                            name="party"
+                            required data-required-msg="Enter Party Name"
+                            class="form-control"
+                            class="full-width"/>
                         <span class="k-invalid-msg" data-for="party"></span>
                     </div>
                 </div>
             </div>
         </fieldset>
-        <button class="k-button" type="submit" id="find" />Find Party</button>
-        <div class="findPartyStatus"></div>
     </div>
-    <br>
-
-    <div id="form-newParty">
+        <button class="k-button" type="submit" id="changeParty" />Change Party</button>
+        <div class="changePartyStatus"></div>
+    <div id="form-changePartyType">
         <fieldset>
             <legend class="form-legend">
-                <span>Add New Party</span>
+                <span>Edit Party Type</span>
+            </legend>
+            <div class="row">
+                <label class="col-md-3 control-label" for="partyType">Party Type:<span
+                            class="require">*</span></label>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="controls">
+                            <select data-role="dropdownlist"
+                                    data-text-field="name"
+                                    data-value-field="id"
+                                    data-filter="startsWith"
+                                    data-minLength="3"
+                                    data-bind="source: partyTypeData"
+                                    id="partyType"
+                                    name="partyType"
+                                    required data-required-msg="Enter Party Type"
+                                    class="full-width">
+                            </select>
+                            <span class="k-invalid-msg" data-for="partyType"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+        <button class="k-button" type="submit" id="changePartyType" />Change Party Type</button>
+        <div class="changePartyTypeStatus"></div>
+    <div id="form-editParty">
+        <fieldset>
+            <legend class="form-legend">
+                <span>Edit Party Details</span>
             </legend>
             <div class="row">
                 <label for="name" class="col-sm-3 control-label">Party Name <span
@@ -207,7 +237,7 @@
             </div>
 
             <div class="row">
-                <label for="postcode" class="col-sm-3 control-label">Postcode <span
+                <label for="website" class="col-sm-3 control-label">Postcode <span
                             class="require">*</span></label>
 
                 <div class="col-sm-4">
@@ -241,8 +271,8 @@
                 </div>
             </div>
         </fieldset>
-        <button class="k-button" type="submit" id="submit" />Add Party</button>
-        <div class="addPartyStatus"></div>
+        <button class="k-button" type="submit" id="submit"/>Edit Party</button>
+        <div class="editPartyStatus"></div>
     </div>
     </div>
     </div>
