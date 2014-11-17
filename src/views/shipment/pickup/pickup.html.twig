@@ -1,0 +1,120 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/pickup'
+        }) }}
+    {% endblock %}
+
+    {% include "shipment/_sidebar.html.twig" %}
+
+    <script type="text/x-kendo-tmpl" id="pickupPointTemplate">
+        <div class="">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            <dl>
+                <dt>Product Name</dt>
+                <dd></dd>
+                <dt>Unit Price</dt>
+                <dd></dd>
+                <dt>Units In Stock</dt>
+                <dd></dd>
+                <dt>Discontinued</dt>
+                <dd></dd>
+            </dl>
+        </div>
+
+    </script>
+
+    <div id="content">
+        <div class="container">
+
+            {% include "shipment/_breadcrumbs.html.twig" %}
+
+            <div class="page-header">
+                <div class="page-title">
+                    <h3>IFT00001</h3>
+                    <span>Shipment Parties</span>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row" style="min-width: 200px">
+
+                            <div class="panel panel-default kanban-col">
+                                <div class="panel-heading">
+                                    Pickup Location
+                                    <i class="fa fa-2x fa-plus-circle pull-right"></i>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="TODO" class="kanban-centered">
+
+                                        <article class="kanban-entry grab" id="item1" draggable="true">
+                                            <div class="kanban-entry-inner">
+                                                <div class="kanban-label">
+                                                    <h2><a href="#">Depot One</a></h2>
+
+                                                    <p>Warrant House, 157 Regent Road, Liverpool, L5 9TF</p>
+                                                </div>
+                                                <div class="kanban-count">
+                                                    <p><span>1 container(s)</span> <span
+                                                                class="pull-right">32,000kg</span></p>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article class="kanban-entry grab" id="item1" draggable="true">
+                                            <div class="kanban-entry-inner">
+                                                <div class="kanban-label">
+                                                    <h2><a href="#">Depot Two</a></h2>
+
+                                                    <p>Warrant House, 157 Regent Road, Liverpool, L5 9TF</p>
+                                                </div>
+                                                <div class="kanban-count">
+                                                    <p><span>5 container(s)</span> <span
+                                                                class="pull-right">32,000kg</span></p>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <a href="#">Add a new pickup location...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div id="shipment-pickup-containers"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="rowTemplate" type="text/x-kendo-tmpl">
+	            <tr data-uid="">
+		            <td>
+                       <h2>#: locationName #</h2>
+                       <p>#: locationAddress #</p>
+		            </td>
+		            <td>
+			           #: containerTotal#
+		            </td>
+                    <td>
+                       #: grossWeight #
+		            </td>
+		            <td>
+		               #: carrierBookingRef #
+		            </td>
+	           </tr>
+    </script>
+
+{% endblock %}

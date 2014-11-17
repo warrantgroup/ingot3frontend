@@ -1,0 +1,114 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/routing'
+        }) }}
+    {% endblock %}
+
+    {% include "shipment/_sidebar.html.twig" %}
+
+    <script type="text/x-kendo-tmpl" id="template">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">#:routingType#</h3>
+                    </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-1 col-lg-1" style="text-align:center;margin-top: 30px;">
+                        <span class="icon-#:modeType#" style="font-size: 60px;"></span>
+                    </div>
+                    <div class=" col-md-5 col-lg-5">
+                            <table class="table table-bordered">
+                            <tbody>
+                                    <tr>
+                                        <td style="width: 200px"><strong>From:</strong></td>
+                                        <td><span class="flag-icon flag-icon-#:fromCountryCode.toLowerCase()#"></span>&nbsp;#:from#<div><small>#:fromAddress#</small></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>To:</strong></td>
+                                        <td><span class="flag-icon flag-icon-#:toCountryCode.toLowerCase()#"></span>&nbsp;#:to#<div><small>#:toAddress#</small></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Carrier:</strong></td>
+                                         <td>#:carrier#</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Reference:</strong></td>
+                                         <td>#:carrierRef#</td>
+                                    </tr>
+                            </tbody>
+                            </table>
+                    </div>
+                    <div class=" col-md-5 col-lg-5">
+                            <table class="table table-bordered">
+                            <tbody>
+                                    <tr>
+                                        <td style="width: 200px"><strong>Departure:</strong> </td>
+                                         <td>#:etd#</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Arrival:</strong> </td>
+                                         <td>#:eta#</td>
+                                    </tr>
+                            </tbody>
+                            </table>
+                    </div>
+                    <div class=" col-md-1 col-lg-1">
+                    <span class="pull-right">
+                    <button class="btn btn-sm" type="button"
+                    data-toggle="tooltip"
+                    data-original-title="Edit"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button class="btn btn-sm" type="button"
+                    data-toggle="tooltip"
+                    data-original-title="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+             <div class="panel-footer">
+            </div>
+            </div>
+        </div>
+    </script>
+
+    <div id="content">
+        <div class="container">
+
+            {% include "shipment/_breadcrumbs.html.twig" %}
+
+            <div class="page-header">
+                <div class="page-title">
+                    <h3>IFT00001</h3>
+                    <span>Shipment Routing</span>
+                </div>
+
+                <div class="page-toolbar">
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-success">Add New Routing</button>
+                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Pickup</a></li>
+                                <li><a href="">Pre-Carriage</a></li>
+                                <li><a href="">Transshipment</a></li>
+                                <li><a href="">On Carriage</a></li>
+                                <li><a href="">Delivery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="shipment-routing-listview"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

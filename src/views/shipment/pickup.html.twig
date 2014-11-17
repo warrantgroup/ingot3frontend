@@ -1,0 +1,136 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {% block requirejs %}
+        {{ include('_requirejs.html.twig', {
+        'module': 'app/shipment/pickup'
+        }) }}
+    {% endblock %}
+
+    {% include "shipment/_sidebar.html.twig" %}
+
+    <div id="content">
+        <div class="container">
+
+            {% include "shipment/_breadcrumbs.html.twig" %}
+
+            <div id="pickup-detail"></div>
+
+            <div class="page-header">
+                <div class="page-title">
+                    <h3>IFT00001</h3>
+                    <span>Shipment Pickup</span>
+                </div>
+
+                <div class="page-toolbar">
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-success" id="shipment-pickup-add">Add New Pickup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pickup-grid"></div>
+        </div>
+    </div>
+
+    <script type="text/x-kendo-template" id="template">
+        <div id="pickup-detail-container">
+            <div id="pickup-detail-tabstrip">
+                <ul>
+                    <li class="k-state-active">
+                        Detail
+                    </li>
+                    <li>
+                        Containers
+                    </li>
+                </ul>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-content">
+                                    <form class="form-horizontal row-border" action="">
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Location</label>
+
+                                            <div class="col-md-10">
+                                                <div class="input-group">
+                                                    <div class="input-group-btn bs-dropdown-to-select-group">
+                                                        <button type="button"
+                                                                class="btn btn-default dropdown-toggle as-is bs-dropdown-to-select"
+                                                                data-toggle="dropdown" tabindex="-1">
+                                                            <span data-bind="bs-drp-sel-label">Party</span>
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li data-value="party"><a>Party</a></li>
+                                                            <li data-value="port"><a>Port</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <input type="text" value="" class="form-control" name="custom_name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Carrier Booking Reference:</label>
+
+                                            <div class="col-md-10"><input type="text" id="carrierBookingRef"
+                                                                          name="regular"
+                                                                          class="form-control" data-role="tagsinput">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="widget-header widget-subheader">
+                                                <h4>Additional Information</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Haulier:</label>
+
+                                            <div class="col-md-10"><input type="text" name="regular"
+                                                                         class="form-control"></div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Reg Number:</label>
+
+                                            <div class="col-md-4"><input type="text" name="regular"
+                                                                         class="form-control"></div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Driver Name:</label>
+
+                                            <div class="col-md-6"><input type="text" name="regular"
+                                                                         class="form-control"></div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Notes:</label>
+
+                                            <div class="col-md-10"><textarea class="form-control" rows="8"></textarea></div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="pickup-container-grid" style="margin-bottom: 20px"></div>
+                            <div class="btn-toolbar">
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-success">Add New Container</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </script>
+{% endblock %}

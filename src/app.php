@@ -38,6 +38,14 @@ $app->get('/shipment/{ref}/parties', function () use ($app) {
     return $app['twig']->render('shipment/parties.html.twig');
 })->bind('shipment_parties');
 
+$app->get('/shipment/{ref}/pickup', function () use ($app) {
+    return $app['twig']->render('shipment/pickup.html.twig');
+})->bind('shipment_pickup');
+
+$app->get('/shipment/{ref}/routing', function () use ($app) {
+    return $app['twig']->render('shipment/routing.html.twig');
+})->bind('shipment_routing');
+
 $app->get('/shipment/{ref}/party/{partyType}/add', function () use ($app) {
     return $app['twig']->render('shipment/addParty.html.twig');
 })->bind('shipment_party_add');
